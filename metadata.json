@@ -1,0 +1,9 @@
+
+{
+  "name": "GDA Verified Network",
+  "description": "An all-in-one logistics and technical assistance platform for the automotive industry, featuring real-time tracking, technical coverage mapping, and emergency road assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
