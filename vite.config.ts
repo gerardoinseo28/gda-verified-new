@@ -1,8 +1,8 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import path from 'path';
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
@@ -10,9 +10,7 @@ export default defineConfig(({ mode }) => {
       react(),
       VitePWA({
         registerType: 'autoUpdate',
-        devOptions: {
-          enabled: true
-        },
+        devOptions: { enabled: true },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg}']
         },
@@ -43,13 +41,14 @@ export default defineConfig(({ mode }) => {
         }
       })
     ],
-    // Simplificamos define para evitar errores si no hay keys
+    // Definimos las variables de entorno de forma segura
     define: {
-      'process.env.API_KEY': JSON.stringify(process.env.VITE_GEMINI_API_KEY || ''),
+      'process.env.VITE_GEMINI_API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY)
     },
+    // Eliminamos el alias problemático que usaba path y __dirname
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        // '@': path.resolve(__dirname, './src'), // ESTO ERA EL CULPABLE
       }
     }
   };
