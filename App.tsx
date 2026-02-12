@@ -10,6 +10,7 @@ import Revenue from './pages/Revenue';
 import Settings from './pages/Settings';
 import BottomNav from './components/BottomNav';
 import { LanguageProvider } from './LanguageContext';
+import LoginScreen from './pages/LoginScreen';
 
 const AppContent: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.DASHBOARD);
@@ -45,10 +46,23 @@ const AppContent: React.FC = () => {
   );
 };
 
-const App: React.FC = () => (
-  <LanguageProvider>
-    <AppContent />
-  </LanguageProvider>
-);
+
+const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  if (!isAuthenticated) {
+    return (
+      <LanguageProvider>
+        <LoginScreen onLogin={() => setIsAuthenticated(true)} />
+      </LanguageProvider>
+    );
+  }
+
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
+  );
+};
 
 export default App;
