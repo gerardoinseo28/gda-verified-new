@@ -14,3 +14,20 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Register Service Worker for PWA
+// @ts-ignore
+import { registerSW } from 'virtual:pwa-register';
+
+if ('serviceWorker' in navigator) {
+  const updateSW = registerSW({
+    onNeedRefresh() {
+      if (confirm('Nueva versión disponible. ¿Recargar?')) {
+        updateSW(true);
+      }
+    },
+    onOfflineReady() {
+      console.log('App lista para trabajar offline');
+    },
+  });
+}
