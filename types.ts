@@ -18,7 +18,7 @@ export interface Transaction {
   logo: string;
 }
 
-export type Language = 'es' | 'en' | 'it' | 'pt';
+export type Language = 'es' | 'en' | 'it' | 'pt' | 'ar';
 
 export enum Screen {
   DASHBOARD = 'dashboard',

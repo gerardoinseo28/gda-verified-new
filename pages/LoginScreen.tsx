@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
+import { useLanguage } from '../LanguageContext';
+
 const LoginScreen = ({ onLogin }: { onLogin: () => void }) => {
+    const { t } = useLanguage();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -24,8 +27,8 @@ const LoginScreen = ({ onLogin }: { onLogin: () => void }) => {
                     </div>
                 </div>
 
-                <h1 className="text-3xl font-bold text-center mb-2">GDA Network</h1>
-                <p className="text-slate-400 text-center mb-8">Inicia sesión para continuar</p>
+                <h1 className="text-3xl font-bold text-center mb-2">{t('appTitle')}</h1>
+                <p className="text-slate-400 text-center mb-8">{t('subtitle')}</p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>

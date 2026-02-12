@@ -1,7 +1,7 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Screen } from '../types';
 import { useLanguage } from '../LanguageContext';
+import RegisterVehicle from './RegisterVehicle';
 
 interface DashboardProps {
   onNavigate: (screen: Screen) => void;
@@ -9,18 +9,23 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
+  const [showRegister, setShowRegister] = useState(false);
+
+  if (showRegister) {
+    return <RegisterVehicle onBack={() => setShowRegister(false)} />;
+  }
 
   return (
     <div className="flex flex-col p-5 space-y-6">
       <header className="flex justify-between items-center">
         <div className="flex flex-col">
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Guía del Automotor</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">{t('subtitle')}</span>
           <h1 className="text-2xl font-extrabold flex items-center gap-2">
             {t('dashboard').toUpperCase()} <span className="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] border border-primary/30 uppercase">Pro</span>
           </h1>
         </div>
         <div className="flex gap-2">
-          <button 
+          <button
             onClick={() => onNavigate(Screen.SETTINGS)}
             className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700"
           >
@@ -39,6 +44,22 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
           <span className="text-3xl font-black tracking-tighter uppercase">{t('zero_hour')}</span>
         </div>
         <span className="text-xs font-bold text-white/90 uppercase tracking-[0.2em]">{t('road_assistance')}</span>
+      </button>
+
+      <button
+        onClick={() => setShowRegister(true)}
+        className="w-full bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all p-4 rounded-xl flex items-center justify-between border border-slate-700 group"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+            <span className="material-icons text-primary">add_circle</span>
+          </div>
+          <div className="text-left">
+            <h3 className="font-bold text-sm text-white">Registrar Unidad</h3>
+            <p className="text-[10px] text-slate-400">Alta de nuevo vehículo en IDP</p>
+          </div>
+        </div>
+        <span className="material-icons text-slate-500">chevron_right</span>
       </button>
 
       <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700 flex items-center gap-3">
@@ -68,7 +89,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
           <h3 className="font-bold text-sm">{t('heavy_duty')}</h3>
           <p className="text-[10px] text-slate-500">Recupero de flota</p>
         </div>
-        <div 
+        <div
           onClick={() => onNavigate(Screen.MAP)}
           className="col-span-2 bg-surface-dark p-4 rounded-xl border border-slate-800 flex items-center gap-4 hover:border-primary/50 cursor-pointer"
         >
@@ -86,7 +107,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
       <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 flex justify-between items-center text-[10px] font-bold">
         <div className="flex items-center gap-2">
           <span className="material-icons text-sm text-primary">verified_user</span>
-          GDA NETWORK ACTIVE
+          IDP SYSTEM ACTIVE
         </div>
         <div className="flex gap-4">
           <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> 4G LIVE</span>
@@ -94,6 +115,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
         </div>
       </div>
     </div>
+
   );
 };
 

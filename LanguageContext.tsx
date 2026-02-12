@@ -3,6 +3,13 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Language } from './types';
 import { translations } from './translations';
 
+export const languages = [
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦' }
+];
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;

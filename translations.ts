@@ -3,6 +3,8 @@ import { Language } from './types';
 
 export const translations: Record<Language, Record<string, string>> = {
   es: {
+    appTitle: 'IDP Global',
+    subtitle: 'Intelligent Driving Prevention',
     dashboard: 'Panel',
     home: 'Inicio',
     map: 'Mapa',
@@ -25,6 +27,8 @@ export const translations: Record<Language, Record<string, string>> = {
     performance: 'Rendimiento'
   },
   en: {
+    appTitle: 'IDP Global',
+    subtitle: 'Intelligent Driving Prevention',
     dashboard: 'Dashboard',
     home: 'Home',
     map: 'Map',
@@ -47,6 +51,8 @@ export const translations: Record<Language, Record<string, string>> = {
     performance: 'Performance'
   },
   it: {
+    appTitle: 'IDP Global',
+    subtitle: 'Prevenzione Guida Intelligente',
     dashboard: 'Cruscotto',
     home: 'Inizio',
     map: 'Mappa',
@@ -69,6 +75,8 @@ export const translations: Record<Language, Record<string, string>> = {
     performance: 'Prestazioni'
   },
   pt: {
+    appTitle: 'IDP Global',
+    subtitle: 'Prevenção Inteligente de Direção',
     dashboard: 'Painel',
     home: 'Início',
     map: 'Mapa',
@@ -89,5 +97,29 @@ export const translations: Record<Language, Record<string, string>> = {
     emergency_alerts: 'Alertas de Emergência',
     export_tax: 'Exportar para Impostos',
     performance: 'Desempenho'
+  },
+  ar: {
+    appTitle: 'IDP Global',
+    subtitle: 'الوقاية الذكية للقيادة',
+    dashboard: 'لوحة القيادة',
+    home: 'الرئيسية',
+    map: 'خريطة',
+    logistics: 'اللوجستيات',
+    telemetry: 'القياس عن بعد',
+    revenue: 'الإيرادات',
+    settings: 'الإعدادات',
+    zero_hour: 'ساعة الصفر',
+    road_assistance: 'المساعدة على الطريق',
+    current_location: 'الموقع الحالي',
+    diagnostics: 'تشخيص',
+    heavy_duty: 'خدمة شاقة',
+    coverage_network: 'شبكة التغطية',
+    verified_centers: 'مراكز معتمدة قريبة',
+    language_region: 'اللغة والمنطقة',
+    system_prefs: 'تفضيلات النظام',
+    units: 'وحدات القياس',
+    emergency_alerts: 'تنبيهات الطوارئ',
+    export_tax: 'تصدير للضرائب',
+    performance: 'أداء'
   }
 };
